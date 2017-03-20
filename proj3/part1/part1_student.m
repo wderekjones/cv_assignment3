@@ -20,7 +20,7 @@ for camid = 0:9
     % project points
     H2 = M * H3;
     Htmp = H2(end,:); Htmp(Htmp == 0) = 1; % handle points at infinity
-    P2 = H2(1:2,:) ./ Htmp;
+    P2 = H2(1:2,:) / Htmp;  % was ./
     
 end
 

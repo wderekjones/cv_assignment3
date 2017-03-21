@@ -19,14 +19,14 @@ for i = 0:9
     points_2d = csvread(points_path_2d);
     
     M = get_projection_matrix(points_2d,points_world);
-    output_projection_title_i = strcat('camera_projection_',num2str(i),'_estimation.csv');
+    output_projection_title_i = strcat('proj3/part1/camera_projection_',num2str(i),'_estimation.csv');
     csvwrite(output_projection_title_i,M);
 
     C = compute_camera_center(M);
-    output_camera_center_i = strcat('camera_center_',num2str(i),'_estimation.csv');
+    output_camera_center_i = strcat('proj3/part1/camera_center_',num2str(i),'_estimation.csv');
     csvwrite(output_camera_center_i,C);
 
     K = get_camera_intrinsic_matrix(M);
-    output_camera_intrinsic_i = strcat('camera_intrinsics_',num2str(i),'_estimation.csv');
+    output_camera_intrinsic_i = strcat('proj3/part1/camera_intrinsics_',num2str(i),'_estimation.csv');
     csvwrite(output_camera_intrinsic_i,K);    
 end

@@ -1,4 +1,4 @@
-function p2_driver(image1,image2,matches,inlier_epsilon,num_iterations,min_inliers)
+function F = p2_driver(image1,image2,matches,inlier_epsilon,num_iterations,min_inliers)
 P1 = matches(:,1:2);
 P2 = matches(:,3:4);
 F = get_best_fundamental_matrix(image1,image2,P1,P2,8,num_iterations,min_inliers,inlier_epsilon);

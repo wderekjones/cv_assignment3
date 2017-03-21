@@ -1,25 +1,24 @@
-inlier_epsilon = 0.125;
-num_iterations = 100;
-F_gt = dlmread('proj3/part2/dataset_1_notre_dame/F_gt.csv');
-notre_dame_img_1 = imread('proj3/part2/dataset_1_notre_dame/image_1.jpg');
-notre_dame_img_2 = imread('proj3/part2/dataset_1_notre_dame/image_2.jpg');
-
-% remember to convert images to floating point
-
-notre_dame_matches_estimated = dlmread('proj3/part2/dataset_1_notre_dame/matches_estimated.csv');
-
-P1 = notre_dame_matches_estimated(:,1:2);
-P2 = notre_dame_matches_estimated(:,3:4);
-
-F = get_best_fundamental_matrix(notre_dame_img_1,notre_dame_img_2,P1,P2,8,num_iterations,inlier_epsilon);
-
-F_inliers = evaluate_fundamental_matrix(F,inlier_epsilon,P1,P2);
+img1 = imread('proj3/part2/dataset_1_notre_dame/image_1.jpg');
+img2 = imread('proj3/part2/dataset_1_notre_dame/image_2.jpg');
+img1_img2_matches = dlmread('proj3/part2/dataset_1_notre_dame/matches_estimated.csv');
 
 
-F = compute_fundamental_matrix(F_inliers(:,1:2),F_inliers(:,3:4));
+img3 = imread('proj3/part2/dataset_2_episcopal_gaudi/image_1.jpg');
+img4 = imread('proj3/part2/dataset_2_episcopal_gaudi/image_2.jpg');
+img3_img4_matches = dlmread('proj3/part2/dataset_2_episcopal_gaudi/matches_estimated.csv');
 
-% estimate the fundamental matrix
-draw_epipolar_lines(F_gt,notre_dame_img_1,notre_dame_img_2,P1,P2);
+img5 = imread('proj3/part2/dataset_3_mount_rushmore/image_1.jpg');
+img6 = imread('proj3/part2/dataset_3_mount_rushmore/image_2.jpg');
+img5_img6_matches = dlmread('proj3/part2/dataset_3_mount_rushmore/matches_estimated.csv');
 
-% TODO: only plot the matches that are inliers
-draw_epipolar_lines(F,notre_dame_img_1,notre_dame_img_2,P1,P2);
+epsilon = 1e-1; %5e-1
+num_iterations = 1000; %300;
+min_inliers = 300;
+
+
+p2_driver(img1,img2,img1_img2_matches,epsilon,num_iterations,min_inliers);
+
+p2_driver(img3,img4,img3_img4_matches,epsilon,num_iterations,min_inliers);
+
+p2_driver(img5,img6,img5_img6_matches,epsilon,num_iterations,min_inliers);
+

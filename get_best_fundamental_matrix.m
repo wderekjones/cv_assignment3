@@ -15,7 +15,7 @@ for i = 1:max_iterations;
     %sample_points_1 = datasample(points_1,sample_size);
     %sample_points_2 = datasample(points_2,sample_size);
 
-     F_est = compute_fundamental_matrix(points_1(sample_indices,:),points_2(sample_indices,:));
+    F_est = compute_fundamental_matrix(points_1(sample_indices,:),points_2(sample_indices,:));
     
     %inliers_F = evaluate_fundamental_matrix(F_est,epsilon,points_1,points_2);
     

@@ -13,10 +13,6 @@ function inliers = evaluate_fundamental_matrix(F,epsilon,points_1,points_2)
             x2 = euclid_2_homogenous_cords(x2);
             d = dot(e_p,x2);
             if abs(d) < epsilon
-                %if ~max(ismember([points_1(i,:) points_2(j,:)],inliers))
-                %    inlier_count = inlier_count + 1;
-                %    inliers(inlier_count,:) = [points_1(i,:) points_2(j,:)];
-                %end
                 if min(ismember([points_1(i,:) points_2(j,:)],inliers)) == 0
                     inlier_count = inlier_count + 1;
                     inliers(inlier_count,:) = [points_1(i,:) points_2(j,:)];

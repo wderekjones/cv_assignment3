@@ -1,4 +1,4 @@
-%CS 636: Assignment 3
+%CS 636: Assignment 3 Part 1
 %by Derek Jones
 
 %This script loads a set of 3 dimenssional world coordinates, then loops to
@@ -26,7 +26,7 @@ for i = 0:9
     output_camera_center_i = strcat('proj3/part1/camera_center_',num2str(i),'_estimation.csv');
     csvwrite(output_camera_center_i,C);
 
-    K = get_camera_intrinsic_matrix(M);
-    output_camera_intrinsic_i = strcat('proj3/part1/camera_intrinsics_',num2str(i),'_estimation.csv');
-    csvwrite(output_camera_intrinsic_i,K);    
+    R = get_camera_rotation_matrix(M);
+    output_camera_rotation_i = strcat('proj3/part1/camera_rotation_',num2str(i),'_estimation.csv');
+    csvwrite(output_camera_rotation_i,R);    
 end
